@@ -16,25 +16,35 @@ public class SimpleQueue {
     }
 
 
+
     public Node remove() {
-        Node min = head;
-        Node temp = head;
-        Node prev = null;
 
-        while(temp != null) {
-            if(temp.next != null && temp.next.cost < min.next.cost){
-                min = temp.next;
-                prev = temp;
+        try {
+            Node min = head;
+            Node temp = head;
+            Node prev = null;
+
+            while (temp != null) {
+                if (temp.next != null && temp.next.cost < min.next.cost) {
+                    min = temp.next;
+                    prev = temp;
+                }
+                temp = temp.next;
             }
-            temp = temp.next;
+
+            if (min != head) {
+                prev.next = min.next;
+            } else {
+                head = head.next;
+            }
+
+        return min;
+
+        }catch (Exception e){
+
         }
 
-        if(min != head) {
-            prev.next = min.next;
-        } else {
-            head = head.next;
-        }
-        return min;
+        return null;
     }
 
     boolean isEmpty(){

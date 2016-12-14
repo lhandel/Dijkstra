@@ -1,4 +1,5 @@
 
+
 import  java.util.*;
 
 
@@ -8,9 +9,11 @@ import  java.util.*;
 
 
 public class Dijkstra {
+
     private Edge[] edgeTo;
     private double[] distTo;
-    private PriorityQueue<Node> pq;
+    private MultiQueue mq;
+
     boolean useSimpelQueue = false;
 
 
@@ -29,7 +32,14 @@ public class Dijkstra {
 
 
         distTo = new double[G.numberOfVertices()];
-        pq = new PriorityQueue<Node>(G.numberOfVertices(),new Node());
+        if(useSimpelQueue){
+            System.out.println("Using SimpleQueue");
+            mq = new MultiQueue(true);
+        }else{
+            System.out.println("Using PriorityQueue");
+            mq = new MultiQueue(G.numberOfVertices());
+        }
+
 
         // Set all vertices to infinity
         for (int v = 0; v < G.numberOfVertices(); v++)
@@ -39,14 +49,13 @@ public class Dijkstra {
         distTo[s] = 0.0;
 
 
-        pq.add(new Node(s,0.0));
+        mq.add(new Node(s,0.0));
 
 
 
-        while (!pq.isEmpty()){
+        while (!mq.isEmpty()){
 
-            int v = pq.remove().node;
-
+            int v = mq.remove().node;
             // Loop throue all edges for the vertex V
             //for (Edge e : G.adj(v)){
             Iterator<Edge> it  = G.adj(v);
@@ -64,7 +73,7 @@ public class Dijkstra {
                     distTo[w] = distTo[v] + asWeight;
                     edgeTo[w] = e;
 
-                    pq.add(new Node(w, distTo[w]));
+                    mq.add(new Node(w, distTo[w]));
                 }
             }
 

@@ -20,8 +20,6 @@ public class JParser {
         try {
 
             Object obj = parser.parse(new FileReader(file));
-
-
             this.data = (JSONObject) obj;
 
 

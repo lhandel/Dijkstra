@@ -61,7 +61,6 @@ public class Graph {
     }
 
     public Iterator<Edge> adj(int v) {
-        System.out.print(this.vertexes[v].edges.size());
         return this.vertexes[v].edges.iterator();
     }
 

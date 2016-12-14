@@ -15,10 +15,8 @@ public class path {
         String file = "/Users/ludwighandel/IdeaProjects/Dijkstra/src/main/resources/graph.txt";
         Graph g = new Graph(file);
 
-        System.out.println(g.numberOfVertices());
 
-        Dijkstra2 dij = new Dijkstra2(g, 0,false);
-
+        Dijkstra dij = new Dijkstra(g, 0,false);
         System.out.println("Shortest Path : "+dij.distTo(3)+" steps)");
 
     }
