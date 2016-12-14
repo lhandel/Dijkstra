@@ -4,43 +4,50 @@ import org.json.simple.JSONObject;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
+
 
 /**
  * Created by ludwighandel on 2016-12-14.
  */
 public class Graph {
-    public Veredges[] veredges;
+    public Veredges[] vertexes;
 
-    public JSONArray data;
 
     public Graph(String file){
 
-       JParser jsp = new JParser(file);
+        // Open and read from the file
+        JParser jsp = new JParser(file);
+        
+        // Extract the data object
+        JSONArray data = (JSONArray)jsp.data.get("data");
+        
+        // Update the size of the vertexes
+        this.vertexes = new Veredges[data.size()];
 
-        this.data = (JSONArray)jsp.data.get("data");
-        this.veredges = new Veredges[this.data.size()];
-
-        Iterator<JSONObject> iterator = this.data.iterator();
-
+        // Loop through the vertxes
+        Iterator<JSONObject> iterator = data.iterator();
         while (iterator.hasNext()) {
             JSONObject vertexObject = (JSONObject)iterator.next();
+
+            // Extract vertexInfo object
             JSONObject vertexInfo = (JSONObject)vertexObject.get("vertex");
 
+            // Extract edges object
             JSONArray vertexEdges = (JSONArray)vertexObject.get("edges");
 
-            String label = (String)vertexInfo.get("label");
-
-            System.out.println(label+" har "+vertexEdges.size()+"st edges");
-
+            // cast the vertex-id
             int id = sToInt((Long) vertexInfo.get("id"));
 
-            this.veredges[id] = new Veredges(vertexInfo,vertexEdges);
+            // Add Veredges-object to vertexes-array
+            this.vertexes[id] = new Veredges(vertexInfo,vertexEdges);
         }
 
 
     }
 
+    /*
+     * Converts a long to int, if it's possible
+     */
     public static int sToInt(long l) {
         if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
             throw new IllegalArgumentException
@@ -50,17 +57,18 @@ public class Graph {
     }
 
     public int numberOfVertices(){
-        return  this.data.size();
+        return  this.vertexes.length;
     }
 
     public Iterator<Edge> adj(int v) {
-        System.out.print(this.veredges[v].edges.size());
-        return this.veredges[v].edges.iterator();
+        System.out.print(this.vertexes[v].edges.size());
+        return this.vertexes[v].edges.iterator();
     }
 
 
 
     private static class Veredges {
+
         Vertex vertex;
         LinkedList<Edge> edges;
 

@@ -17,7 +17,7 @@ public class path {
 
         System.out.println(g.numberOfVertices());
 
-        Dijkstra dij = new Dijkstra(g, 0);
+        Dijkstra2 dij = new Dijkstra2(g, 0,false);
 
         System.out.println("Shortest Path : "+dij.distTo(3)+" steps)");
 
