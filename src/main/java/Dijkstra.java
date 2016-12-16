@@ -1,8 +1,4 @@
-
-
 import  java.util.*;
-
-
 /**
  * Created by ludwighandel on 15-12-09.
  */
@@ -33,10 +29,10 @@ public class Dijkstra {
 
         distTo = new double[G.numberOfVertices()];
         if(useSimpelQueue){
-            System.out.println("Using SimpleQueue");
+            //System.out.println("Using SimpleQueue");
             mq = new MultiQueue(true);
         }else{
-            System.out.println("Using PriorityQueue");
+            //System.out.println("Using PriorityQueue");
             mq = new MultiQueue(G.numberOfVertices());
         }
 
@@ -55,9 +51,10 @@ public class Dijkstra {
 
         while (!mq.isEmpty()){
 
+
             int v = mq.remove().node;
+
             // Loop throue all edges for the vertex V
-            //for (Edge e : G.adj(v)){
             Iterator<Edge> it  = G.adj(v);
             while(it.hasNext()){
                 Edge e = it.next();
@@ -85,5 +82,19 @@ public class Dijkstra {
         return this.distTo[v];
     }
 
+    public boolean hasPathTo(int v){
+        return distTo[v] < Double.POSITIVE_INFINITY;
+    }
+
+    public Iterable<Edge> pathTo(int v){
+        if(hasPathTo(v)) {
+            Stack<Edge> path = new Stack<Edge>();
+            for (Edge e = edgeTo[v]; e != null; e = edgeTo[e.from])
+                path.push(e);
+
+            return path;
+        }
+        return null;
+    }
 
 }

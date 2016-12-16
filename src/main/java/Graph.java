@@ -10,7 +10,10 @@ import java.util.LinkedList;
  * Created by ludwighandel on 2016-12-14.
  */
 public class Graph {
+
     public Veredges[] vertexes;
+
+    int numberOfEdges = 0;
 
 
     public Graph(String file){
@@ -40,6 +43,8 @@ public class Graph {
 
             // Add Veredges-object to vertexes-array
             this.vertexes[id] = new Veredges(vertexInfo,vertexEdges);
+
+            this.numberOfEdges = this.numberOfEdges+vertexEdges.size();
         }
 
 

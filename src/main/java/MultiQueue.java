@@ -23,8 +23,26 @@ public class MultiQueue {
         if (useSimple) {
             sq.add(n);
         } else {
-            pq.add(n);
+            if(pq.contains(n)){
+                // decres
+                pq.remove(n);
+                pq.add(n);
+            }else {
+                pq.add(n);
+            }
         }
+
+    }
+
+
+    public int size(){
+        int s = 0;
+        if(useSimple) {
+            s = sq.size();
+        }else{
+
+        }
+        return  s;
     }
 
     public Node remove() {

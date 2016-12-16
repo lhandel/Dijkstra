@@ -1,0 +1,95 @@
+{
+	"data": [{
+		"vertex": {
+			"label": "A",
+			"id": 0
+		},
+		"edges": [{
+			"from": 0,
+			"to": 1,
+			"weight": 7.0
+		}, {
+			"from": 0,
+			"to": 2,
+			"weight": 1.0
+		}]
+	    },{
+		"vertex": {
+			"label": "B",
+			"id": 1
+		},
+		"edges": [{
+			"from": 1,
+			"to": 0,
+			"weight": 7.0
+		}, {
+			"from": 1,
+			"to": 4,
+			"weight": 6.0
+		}]
+	}, {
+		"vertex": {
+			"label": "C",
+			"id": 2
+		},
+		"edges": [{
+			"from": 2,
+			"to": 0,
+			"weight": 1.0
+		}, {
+			"from": 2,
+			"to": 3,
+			"weight": 4.0
+		}, {
+			"from": 2,
+			"to": 4,
+			"weight": 2.0
+		}]
+	}, {
+		"vertex": {
+			"label": "D",
+			"id": 3
+		},
+		"edges": [{
+			"from": 3,
+			"to": 2,
+			"weight": 4.0
+		}, {
+			"from": 3,
+			"to": 5,
+			"weight": 3.0
+		}]
+	}, {
+		"vertex": {
+			"label": "E",
+			"id": 4
+		},
+		"edges": [{
+			"from": 4,
+			"to": 1,
+			"weight": 6.0
+		}, {
+			"from": 4,
+			"to": 2,
+			"weight": 2.0
+		}, {
+			"from": 4,
+			"to": 5,
+			"weight": 4.0
+		}]
+	}, {
+		"vertex": {
+			"label": "F",
+			"id": 5
+		},
+		"edges": [{
+			"from": 5,
+			"to": 3,
+			"weight": 3.0
+		}, {
+			"from": 5,
+			"to": 4,
+			"weight": 4.0
+		}]
+	}]
+}

@@ -16,6 +16,15 @@ public class SimpleQueue {
     }
 
 
+    public int size(){
+        Node current = head;
+        int i = 0;
+        while(current!=null){
+            current = head.next;
+            i++;
+        }
+        return i;
+    }
 
     public Node remove() {
 
